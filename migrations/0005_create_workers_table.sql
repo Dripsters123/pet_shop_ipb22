@@ -1,0 +1,10 @@
+USE pet_shop;
+DROP TABLE IF EXISTS workers;
+
+CREATE TABLE workers (
+id INT NOT NULL AUTO_INCREMENT,
+clients_id INT NOT NULL,
+position VARCHAR(100) NOT NULL,
+salary DECIMAL(8, 2) NOT NULL,
+PRIMARY KEY (id)    
+);

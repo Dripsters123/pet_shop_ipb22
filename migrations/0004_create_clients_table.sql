@@ -1,0 +1,10 @@
+USE pet_shop;
+DROP TABLE IF EXISTS clients;
+
+CREATE TABLE clients(
+id INT NOT NULL AUTO_INCREMENT,    
+last_name VARCHAR(100) NOT NULL,
+phone_number INT NOT NULL,
+email VARCHAR(100) NOT NULL,
+PRIMARY KEY (id)
+);
