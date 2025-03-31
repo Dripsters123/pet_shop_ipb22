@@ -19,12 +19,12 @@ class Database
         $dsnWithDb = "mysql:" . http_build_query($this->config, "", ";");
 
         try {
-            // Attempt to connect to the database directly
+
             $this->pdo = new PDO($dsnWithDb, $this->config['user'], $this->config['password']);
             $this->pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
             echo "Connected to the database '{$this->config['dbname']}' successfully.\n";
         } catch (PDOException $e) {
-            if ($e->getCode() === 1049) { // Unknown database error
+            if ($e->getCode() === 1049) {
                 echo "Database '{$this->config['dbname']}' does not exist. Creating it...\n";
                 $this->createDatabase($dsnWithoutDb);
                 $this->pdo = new PDO($dsnWithDb, $this->config['user'], $this->config['password']);

@@ -2,15 +2,14 @@
 require_once 'Database.php';
 
 try {
-    // Initialize the Database class
+
     $db = new Database();
 
-    // Path to the migrations folder
+
     $migrationPath = __DIR__ . '/migrations';
 
-    // Fetch migration files
     $migrationFiles = array_diff(scandir($migrationPath), ['.', '..']);
-    sort($migrationFiles); // Ensure files are sorted by name
+    sort($migrationFiles);
 
     foreach ($migrationFiles as $file) {
         $filePath = $migrationPath . '/' . $file;
@@ -18,7 +17,7 @@ try {
         if (pathinfo($filePath, PATHINFO_EXTENSION) === 'sql') {
             echo "Processing migration: $file\n";
 
-            // Execute migration
+
             try {
                 $query = file_get_contents($filePath);
                 $db->query($query);
