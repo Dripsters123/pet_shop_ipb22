@@ -17,7 +17,6 @@ try {
         if (pathinfo($filePath, PATHINFO_EXTENSION) === 'sql') {
             echo "Processing migration: $file\n";
 
-
             try {
                 $query = file_get_contents($filePath);
                 $db->query($query);
